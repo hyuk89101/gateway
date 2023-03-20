@@ -1,0 +1,36 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes:
+        - id: service1
+          uri: http://localhost:8011
+          predicates:
+            - Path=/reseller/**
+        - id: service2
+          uri: http://localhost:8012
+          predicates:
+            - Path=/openmarket/**
+        - id: gateway
+          uri: http://localhost:9001
+          predicates:
+            - Path=/gateway/**
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true # 유레카 서비스에 (자신을) 등록 여부
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://eureka.taskoo.net/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
