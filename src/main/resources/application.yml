@@ -4,22 +4,26 @@ server:
 spring:
   application:
     name: gateway
-  cloud:
-    gateway:
-      routes:
-        - id: service1
-          uri: http://localhost:8011
-          predicates:
-            - Path=/reseller/**
-        - id: service2
-          uri: http://localhost:8012
-          predicates:
-            - Path=/openmarket/**
-        - id: gateway
-          uri: http://localhost:9001
-          predicates:
-            - Path=/gateway/**
-
+  #cloud:
+  #  gateway:
+  #    routes:
+  #      - id: service1
+  #        uri: http://localhost:8011
+  #        predicates:
+  #          - Path=/reseller/**
+  #      - id: service2
+  #        uri: http://localhost:8012
+  #        predicates:
+   #         - Path=/openmarket/**
+   ##     - id: auth
+    #      uri: http://localhost:8013
+    #      predicates:
+    #        - Path=/auth/**
+    #    - id: gateway
+    #      uri: http://localhost:9001
+    #      predicates:
+    #        - Path=/gateway/**
+    ##
 eureka:
   instance:
     prefer-ip-address: true
